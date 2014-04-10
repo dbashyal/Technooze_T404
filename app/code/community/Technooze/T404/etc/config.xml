@@ -24,16 +24,36 @@
                 <class>Technooze_T404_Helper</class>
             </t404>
         </helpers>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <t404>
+                        <type>singleton</type>
+                        <class>Technooze_T404_Model_Observer</class>
+                        <method>frontInitBefore</method>
+                    </t404>
+                </observers>
+            </controller_front_init_routers>
+            <controller_front_init_before>
+                <observers>
+                    <t404>
+                        <type>singleton</type>
+                        <class>Technooze_T404_Model_Observer</class>
+                        <method>frontInitBefore</method>
+                    </t404>
+                </observers>
+            </controller_front_init_before>
+        </events>
     </global>
     <frontend>
         <events>
             <controller_action_predispatch>
                 <observers>
-                    <technooze_t404_model_observer>
+                    <t404>
                         <type>singleton</type>
-                        <class>t404/observer</class>
+                        <class>Technooze_T404_Model_Observer</class>
                         <method>noRoute</method>
-                    </technooze_t404_model_observer>
+                    </t404>
                 </observers>
             </controller_action_predispatch>
         </events>
