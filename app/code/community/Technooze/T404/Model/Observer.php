@@ -177,8 +177,13 @@ class Technooze_T404_Model_Observer
 
             $appEmulation = Mage::getSingleton('core/app_emulation');
             $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation($_productStoreId);
+            /* @var $categories Mage_Catalog_Model_Resource_Category_Collection */
             $categories = $_product->getCategoryCollection();
             $categories->addFieldToFilter('path', array('like' => "1/" . Mage::app()->getStore($_productStoreId)->getRootCategoryId() . "/%"));
+            $categories->addAttributeToFilter('is_active', array('eq'=>'1'));
+            $categories->addAttributeToSort('level', 'desc'); // get the top most category
+
+            /* @var $category Mage_Catalog_Model_Category */
             $category = $categories->getLastItem();
             $_categoryUrl = $category->getUrl();
             $appEmulation->stopEnvironmentEmulation($initialEnvironmentInfo);
