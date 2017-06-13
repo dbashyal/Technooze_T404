@@ -190,7 +190,7 @@ class Technooze_T404_Model_Observer
 
             $_productName = $_product->getName();
             $_productSku = $_product->getSKU();
-            $msg = Mage::helper('core')->__('Product "%s" (SKU: %s) is no longer in stock. Please check other items from same category.', $_productName, $_productSku);
+            $msg = Mage::helper('t404')->__('Product "%s" (SKU: %s) is no longer in stock. Please check other items from same category.', $_productName, $_productSku);
             Mage::getSingleton('core/session')->addNotice($msg);
 
             $this->_response->setRedirect($_categoryUrl, 301)->sendResponse();
